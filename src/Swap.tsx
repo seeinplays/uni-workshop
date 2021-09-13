@@ -7,21 +7,30 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Heading,
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
 function Swap() {
   return (
     <>
-      <FormControl maxW='35rem'>
+      <FormControl
+        p='2.5rem'
+        h='19rem'
+        borderRadius='15px'
+        maxW='35rem'
+        boxShadow='0 20px 4px 0 rgba(0,0,0,.3)'
+      >
         <Flex direction='column'>
           <Flex>
-            <Input mb={5} mr={5} />
+            <Input borderRadius='15px' h={55} mb={5} mr={5} />
             <Menu>
               <MenuButton
+                borderRadius='15px'
+                h={55}
                 as={Button}
                 rightIcon={<ChevronDownIcon />}
-              ></MenuButton>
+              />
               <MenuList>
                 <MenuItem>ETH</MenuItem>
                 <MenuItem>DAI</MenuItem>
@@ -29,12 +38,14 @@ function Swap() {
             </Menu>
           </Flex>
           <Flex>
-            <Input mb={5} mr={5} />
+            <Input borderRadius='15px' h={55} mb={10} mr={5} />
             <Menu>
               <MenuButton
+                borderRadius='15px'
+                h={55}
                 as={Button}
                 rightIcon={<ChevronDownIcon />}
-              ></MenuButton>
+              />
               <MenuList>
                 <MenuItem>ETH</MenuItem>
                 <MenuItem>DAI</MenuItem>
@@ -42,7 +53,7 @@ function Swap() {
             </Menu>
           </Flex>
         </Flex>
-        <Button sz='md' colorScheme='teal'>
+        <Button w='100%' borderRadius='15px' size='lg' colorScheme='green'>
           Swap
         </Button>
       </FormControl>
