@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { ChakraProvider } from '@chakra-ui/react';
 import { createWeb3ReactRoot, Web3ReactProvider } from "@web3-react/core";
 import { Web3Provider } from '@ethersproject/providers'
 
@@ -21,17 +20,14 @@ if (!!(window as any).ethereum) {
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Web3ReactProvider getLibrary={getLibrary}>
-      <Web3RootProvider getLibrary={getLibrary}>
-        <App />
-      </Web3RootProvider>
-    </Web3ReactProvider>
-  </React.StrictMode>,
+  <ChakraProvider>
+    <React.StrictMode>
+      <Web3ReactProvider getLibrary={getLibrary}>
+        <Web3RootProvider getLibrary={getLibrary}>
+          <App />
+        </Web3RootProvider>
+      </Web3ReactProvider>
+    </React.StrictMode>
+  </ChakraProvider>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

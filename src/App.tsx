@@ -1,27 +1,15 @@
 import React from 'react';
+import { Flex } from '@chakra-ui/react';
+
+import Swap from './Swap';
 import Web3ApiManager from "./polywrap/Web3ApiManager";
-import logo from './logo.svg';
-import './App.css';
 
 function App() {
   return (
     <Web3ApiManager>
-      <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.tsx</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
-      </div>
+      <Flex height='100vh' justify='center' align='center' direction='column'>
+        <Swap />
+      </Flex>
     </Web3ApiManager>
   );
 }
