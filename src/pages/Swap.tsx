@@ -51,9 +51,9 @@ export default function Swap() {
         h='19rem'
         borderRadius='15px'
         maxW='35rem'
-        boxShadow='0 20px 4px 0 rgba(0,0,0,.3)'
+        boxShadow='0 2px 4px 0 rgba(0,0,0,.3)'
       >
-        <Flex direction='column'>
+        <Flex direction='column' yarn st>
           <Flex>
             <Input borderRadius='15px' h={55} mb={5} mr={5} />
             <Menu>
