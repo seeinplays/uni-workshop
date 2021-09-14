@@ -4,6 +4,7 @@ import { getTokenList, TokenAmount } from "../web3api/types";
 import { fetchPairData } from "../web3api/fetchPairData";
 import { fetchSwapOutputAmount } from "../web3api/fetchSwapOutputAmount";
 import { approvalNeeded } from "../web3api/approvalNeeded";
+import { approveToken } from "../web3api/approveToken";
 import { useWeb3React } from "@web3-react/core";
 import {
   Flex,
@@ -20,6 +21,7 @@ import {
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { useWeb3ApiClient } from "@web3api/react";
 import Decimal from "decimal.js-light";
+import { swapTokenPair } from "../web3api/swapTokenPair";
 
 export default function Swap() {
 
@@ -92,6 +94,32 @@ export default function Swap() {
       }
       setAwaitCalculateTokenOutAmount(undefined);
     }));
+  };
+
+  const execSwap = async () => {
+    if (incompleteData) {
+      return;
+    }
+
+    const schemaTokenList = getTokenList();
+    const inputToken = schemaTokenList[tokenInIndex];
+    const inputDecimals = new Decimal("10").pow(inputToken.currency.decimals);
+    const tokenInAmountDec = new Decimal(tokenInAmount || "0").mul(inputDecimals);
+
+    if (approveNeeded) {
+      const hash = await approveToken(client, inputToken, tokenInAmountDec.toFixed());
+      console.log("Token Allowance Approved: ", hash);
+      return;
+    }
+
+    const hash = await swapTokenPair(
+      client,
+      inputToken,
+      schemaTokenList[tokenOutIndex],
+      tokenInAmountDec.toFixed(),
+      account as string
+    );
+    console.log("Tokens Swapped: ", hash);
   }
 
   const TokenMenu = (props: { in?: boolean }) => (
@@ -159,7 +187,7 @@ export default function Swap() {
             </Menu>
           </Flex>
         </Flex>
-        <Button w='100%' borderRadius='15px' size='lg' colorScheme='green'>
+        <Button w='100%' borderRadius='15px' size='lg' colorScheme='green' onClick={execSwap}>
           {incompleteData ?
             "..." :
             approveNeeded ?

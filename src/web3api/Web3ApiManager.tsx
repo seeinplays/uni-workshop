@@ -40,14 +40,14 @@ const defaultEthConfig: EthereumConfig = {
 };
 
 export default function Web3ApiManager({ children }: { children: JSX.Element }) {
-  const { library, chainId } = useWeb3React()
+  const { library, chainId, account } = useWeb3React()
 
-  const [ethConfig, setEthConfig] = useState<EthereumConfig>(defaultEthConfig);
+  const [ethPlugin, setEthPlugin] = useState(ethereumPlugin(defaultEthConfig));
 
   const plugins: PluginRegistration[] = [
     {
       uri: 'ens/ethereum.web3api.eth',
-      plugin: ethereumPlugin(ethConfig)
+      plugin: ethPlugin
     }
   ];
 
@@ -57,7 +57,7 @@ export default function Web3ApiManager({ children }: { children: JSX.Element }) 
       const currentNetwork = networks[id]
 
       if (!currentNetwork) {
-        setEthConfig(defaultEthConfig);
+        setEthPlugin(ethereumPlugin(defaultEthConfig));
         return;
       }
 
@@ -68,12 +68,12 @@ export default function Web3ApiManager({ children }: { children: JSX.Element }) 
         }
       }
 
-      setEthConfig({
+      setEthPlugin(ethereumPlugin({
         networks: networkConfigs,
         defaultNetwork: currentNetwork.name
-      });
+      }));
     }
-  }, [library, chainId]);
+  }, [library, chainId, account]);
 
   return <Web3ApiProvider plugins={plugins}>{children}</Web3ApiProvider>;
 }
