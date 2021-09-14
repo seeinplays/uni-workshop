@@ -16,7 +16,7 @@ Today, we'll build:
 
 NOTE: Polywrap used to be called "Web3API", and the code-base has not been renamed yet. Going forward you'll be seeing Web3API terminology in the demo code-bases.
 
-## 1. Custom Uniswap dApp
+## 1. Custom Uniswap dApp (Using Polywrap)
 [Start Here](./dapp/README.md)
 
 ## 2. Your Own Polywrapper (Using Uniswap)
