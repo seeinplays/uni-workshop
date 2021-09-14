@@ -1,5 +1,5 @@
 # Your Own Polywrapper (Using Uniswap)
-> NOTE: If at any point during this tutorial you feel stuck, you can see the completed project [here](TODO). Additionally please feel free to reach out to us on [Discord](http://discord.polywrap.io/) if you have any questions, or need some hands on help.
+> NOTE: If at any point during this tutorial you feel stuck, you can see the completed project [here](https://github.com/polywrap/uni-workshop/tree/completed). Additionally please feel free to reach out to us on [Discord](http://discord.polywrap.io/) if you have any questions, or need some hands on help.
 
 ## 0. Pre-Requisites
 Have installed:

@@ -1,5 +1,5 @@
 # Custom Uniswap dApp (Using Polywrap)
-> NOTE: If at any point during this tutorial you feel stuck, you can see the completed project [here](TODO). Additionally please feel free to reach out to us on [Discord](http://discord.polywrap.io/) if you have any questions, or need some hands on help.
+> NOTE: If at any point during this tutorial you feel stuck, you can see the completed project [here](https://github.com/polywrap/uni-workshop/tree/completed). Additionally please feel free to reach out to us on [Discord](http://discord.polywrap.io/) if you have any questions, or need some hands on help.
 
 ## 0. Pre-Requisites
 Have installed:
@@ -221,7 +221,18 @@ export async function swapTokenPair(
       tokenOut: outputToken,
       amount: inputAmount,
       allowedSlippage: allowedSlippage,
-      recipient: usAnd lastly, if you still need more convincing on why Polywrap is 
+      recipient: userAddress,
+      ttl: ttl
+    }
+  });
+
+  if (errors) {
+    throw errors;
+  }
+
+  if (!data) {
+    throw Error("swap returned undefined, this should never happen");
+  }
 
   return data.swap.hash;
 }
