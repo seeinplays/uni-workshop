@@ -241,3 +241,10 @@ https://polywrap.io
 
 If you have any questions, don't hesitate to reach out:
 http://discord.polywrap.io
+
+## Resources
+Try The Uniswap <> Polywrap Demo App:  
+https://demo.uniswap.polywrap.io/
+
+Checkout the Uniswap Polywrapper's source-code:  
+https://github.com/polywrap/monorepo/tree/prealpha/packages/apis/uniswapv2
