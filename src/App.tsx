@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, Flex, Image } from '@chakra-ui/react';
-import Swap from './Swap';
-import Nav from './Nav';
+import { Flex } from '@chakra-ui/react';
+import Swap from './pages/Swap';
+import Nav from './components/Nav';
 import Web3ApiManager from './polywrap/Web3ApiManager';
 
 function App() {

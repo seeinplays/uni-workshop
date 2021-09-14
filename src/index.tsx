@@ -1,20 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { getLibrary } from './web3';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
-import { createWeb3ReactRoot, Web3ReactProvider } from '@web3-react/core';
-import { Web3Provider } from '@ethersproject/providers';
-
-function getLibrary(provider: any): Web3Provider {
-  const library = new Web3Provider(provider, 'any');
-  library.pollingInterval = 15000;
-  return library;
-}
-
-const NetworkContextName = 'NETWORK';
-
-const Web3RootProvider = createWeb3ReactRoot(NetworkContextName);
+import { Web3ReactProvider } from '@web3-react/core';
 
 if (!!(window as any).ethereum) {
   (window as any).ethereum.autoRefreshOnNetworkChange = false;
@@ -37,9 +27,7 @@ ReactDOM.render(
   <ChakraProvider theme={theme}>
     <React.StrictMode>
       <Web3ReactProvider getLibrary={getLibrary}>
-        <Web3RootProvider getLibrary={getLibrary}>
-          <App />
-        </Web3RootProvider>
+        <App />
       </Web3ReactProvider>
     </React.StrictMode>
   </ChakraProvider>,
