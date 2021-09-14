@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { tokenList } from "../constants/token-list";
+import { getTokenList, Pair, TokenAmount } from "../web3api/types";
+import { fetchPairData } from "../web3api/fetchPairData";
+import { fetchSwapOutputAmount } from "../web3api/fetchSwapOutputAmount";
 import { useWeb3React } from "@web3-react/core";
 import {
   Flex,
@@ -14,12 +17,58 @@ import {
   Text
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import { useWeb3ApiClient } from "@web3api/react";
+import Decimal from "decimal.js-light";
 
 export default function Swap() {
 
   const { chainId } = useWeb3React();
+  const client = useWeb3ApiClient();
   const [tokenInIndex, setTokenInIndex] = useState(-1);
   const [tokenOutIndex, setTokenOutIndex] = useState(-1);
+  const [tokenInAmount, setTokenInAmount] = useState("Input Amount");
+  const [tokenOutAmount, setTokenOutAmount] = useState("...");
+  const [awaitCalculateTokenOutAmount, setAwaitCalculateTokenOutAmount] = useState<Promise<void> | undefined>(undefined);
+
+  const calculateTokenOutAmount = async () => {
+    if (tokenInIndex < 0 || tokenOutIndex < 0) {
+      return;
+    }
+
+    if (awaitCalculateTokenOutAmount) {
+      await awaitCalculateTokenOutAmount;
+    }
+
+    setAwaitCalculateTokenOutAmount(new Promise(async (resolve, reject): Promise<void> => {
+      try {
+        const schemaTokenList = getTokenList();
+        const inputToken = schemaTokenList[tokenInIndex];
+        const outputToken = schemaTokenList[tokenOutIndex];
+
+        const pair = await fetchPairData(
+          client,
+          inputToken,
+          outputToken,
+        );
+
+        const inputDecimals = new Decimal("10").pow(inputToken.currency.decimals);
+        const tokenInAmountDec = new Decimal(tokenInAmount || "0").mul(inputDecimals);
+
+        const inputTokenAmount: TokenAmount = {
+          token: inputToken,
+          amount: tokenInAmountDec.toString()
+        };
+
+        const outputAmount = await fetchSwapOutputAmount(client, pair, inputTokenAmount);
+        const outputDecimals = new Decimal("10").pow(outputToken.currency.decimals);
+        setTokenOutAmount(new Decimal(outputAmount).div(outputDecimals).toFixed(6));
+        resolve();
+      } catch (e) {
+        reject(e);
+      }
+      setAwaitCalculateTokenOutAmount(undefined);
+    }));
+  }
 
   const TokenMenu = (props: { in?: boolean }) => (
     <MenuList>
@@ -44,6 +93,10 @@ export default function Swap() {
       <Text>?</Text>
   );
 
+  useEffect(() => {
+    calculateTokenOutAmount();
+  }, [tokenInAmount, tokenInIndex, tokenOutIndex]);
+
   return (
     <>
       <FormControl
@@ -55,7 +108,9 @@ export default function Swap() {
       >
         <Flex direction='column' yarn st>
           <Flex>
-            <Input borderRadius='15px' h={55} mb={5} mr={5} />
+            <Input borderRadius='15px' h={55} mb={5} mr={5} value={tokenInAmount} onChange={(event) => {
+              setTokenInAmount(event.target.value);
+            }} />
             <Menu>
               <MenuButton
                 borderRadius='15px'
@@ -69,7 +124,7 @@ export default function Swap() {
             </Menu>
           </Flex>
           <Flex>
-            <Input borderRadius='15px' h={55} mb={10} mr={5} />
+            <Input disabled={true} borderRadius='15px' h={55} mb={10} mr={5} value={tokenOutAmount} />
             <Menu>
               <MenuButton
                 borderRadius='15px'

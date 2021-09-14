@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex } from '@chakra-ui/react';
 import Swap from './pages/Swap';
 import Nav from './components/Nav';
-import Web3ApiManager from './polywrap/Web3ApiManager';
+import Web3ApiManager from './web3api/Web3ApiManager';
 
 function App() {
   return (

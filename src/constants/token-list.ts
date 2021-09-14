@@ -38,15 +38,7 @@ export const tokenList: TokenInfo[] = [
     "symbol": "UNI",
     "decimals": 18,
     "chainId": 1,
-    "logoURI": "ipfs://QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg"
-  },
-  {
-    "name": "USDCoin",
-    "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-    "symbol": "USDC",
-    "decimals": 6,
-    "chainId": 1,
-    "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png"
+    "logoURI": "https://assets.coingecko.com/coins/images/12504/small/uniswap-uni.png?1600306604"
   },
   {
     "chainId": 1,
@@ -78,7 +70,7 @@ export const tokenList: TokenInfo[] = [
     "symbol": "UNI",
     "decimals": 18,
     "chainId": 3,
-    "logoURI": "ipfs://QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg"
+    "logoURI": "https://assets.coingecko.com/coins/images/12504/small/uniswap-uni.png?1600306604"
   },
   {
     "name": "Wrapped Ether",
@@ -118,7 +110,7 @@ export const tokenList: TokenInfo[] = [
     "symbol": "UNI",
     "decimals": 18,
     "chainId": 4,
-    "logoURI": "ipfs://QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg"
+    "logoURI": "https://assets.coingecko.com/coins/images/12504/small/uniswap-uni.png?1600306604"
   },
   {
     "name": "Wrapped Ether",
@@ -142,7 +134,7 @@ export const tokenList: TokenInfo[] = [
     "symbol": "UNI",
     "decimals": 18,
     "chainId": 5,
-    "logoURI": "ipfs://QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg"
+    "logoURI": "https://assets.coingecko.com/coins/images/12504/small/uniswap-uni.png?1600306604"
   },
   {
     "name": "Wrapped Ether",
@@ -182,7 +174,7 @@ export const tokenList: TokenInfo[] = [
     "symbol": "UNI",
     "decimals": 18,
     "chainId": 42,
-    "logoURI": "ipfs://QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg"
+    "logoURI": "https://assets.coingecko.com/coins/images/12504/small/uniswap-uni.png?1600306604"
   },
   {
     "name": "Wrapped Ether",
