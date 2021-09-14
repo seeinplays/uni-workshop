@@ -1,0 +1,11 @@
+# TODO
+- NOTE: at any time you can view this completed version of the project
+- deps (node, nvm, yarn)
+- install
+- start
+- info on what's already done
+- info on what the user will be adding
+- 1. add token data fetching
+- 2. add approval
+- 3. add swapping
+- complete!
