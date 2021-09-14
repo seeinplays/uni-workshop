@@ -6,30 +6,5 @@ export async function fetchSwapOutputAmount(
   pair: Pair,
   inputAmount: TokenAmount
 ): Promise<string> {
-
-  const { data, errors } = await client.query<{
-    pairOutputAmount: TokenAmount
-  }>({
-    uri: ensUri,
-    query: `query{
-      pairOutputAmount(
-        pair: $pair
-        inputAmount: $input
-      )
-    }`,
-    variables: {
-      pair: pair,
-      input: inputAmount
-    }
-  });
-
-  if (errors) {
-    throw errors;
-  }
-
-  if (!data) {
-    throw Error("pairOutputAmount returned undefined, this should never happen");
-  }
-
-  return data.pairOutputAmount.amount;
+  return "0";
 }

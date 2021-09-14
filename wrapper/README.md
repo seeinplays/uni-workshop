@@ -26,7 +26,7 @@ In GraphQL & Polywrap, operations are seperated in Read & Write, or rather Query
 For each Polywrap module, there is a GraphQL schema & an Assemblyscript (or other wasm-compatible language) implementation. The GraphQL serves as the "public interface" for your webassembly code.
 
 Navigate to the file:  
-`./src/query/schema.graphql`
+[`./src/query/schema.graphql`](./src/query/schema.graphql)
 
 And add the following code:  
 ```graphql
@@ -49,7 +49,7 @@ In this schema, you'll see that first we import some types from the Uniswap poly
 Let's write the "implementation" of this function in AssemblyScript, which will later be compiled down to WebAssembly :)
 
 In the file: 
-`./src/query/index.ts`
+[`./src/query/index.ts`](./src/query/index.ts)
 
 Add the following code:  
 ```typescript
@@ -84,7 +84,7 @@ Additionally, you'll notice that we're importing the same types that are used in
 Next, we'll create a Mutation (write) function. This function will make it a bit easier for a user to swap tokens using Uniswap.
 
 In the file:  
-`./src/mutation/schema.graphql`
+[`./src/mutation/schema.graphql`](./src/mutation/schema.graphql)
 
 Add the following schema:  
 ```graphql
@@ -110,7 +110,7 @@ As you can see, we define another function named `simpleSwap`, as well as a new 
 ## 5. Add the Mutation Implementation
 
 And finally, the mutation's implementation:  
-`./src/mutation/index.ts`
+[`./src/mutation/index.ts`](./src/mutation/index.ts)
 
 ```typescript
 import {
