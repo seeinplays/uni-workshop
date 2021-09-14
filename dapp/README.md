@@ -232,6 +232,8 @@ And just like that, we have swapping functionality! Give it a try for yourself :
 ## Recap
 As you've just seen, integrating Web3 protocols into your applications has never been so easy. Polywrap makes interacting with Web3 just like it used to be in Web2, WITHOUT sacraficing decentralization.
 
+Polywrap is Web3 composability on steroids for dApp developers, and we hope that this simple tutorial is starting to give you a better idea of why this is so.
+
 If you'd like to learn more, checkout our landing page & documentation:
 https://polywrap.io
 
