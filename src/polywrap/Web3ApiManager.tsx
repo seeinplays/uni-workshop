@@ -30,17 +30,19 @@ const networks: Record<string, {
   },
 };
 
+const defaultEthConfig: EthereumConfig = {
+  networks: {
+    mainnet: {
+      provider: 'https://mainnet.infura.io/v3/b00b2c2cc09c487685e9fb061256d6a6'
+    }
+  },
+  defaultNetwork: "mainnet"
+};
+
 export default function Web3ApiManager({ children }: { children: JSX.Element }) {
   const { library, chainId } = useWeb3React()
 
-  const [ethConfig, setEthConfig] = useState<EthereumConfig>({
-    networks: {
-      mainnet: {
-        provider: 'https://mainnet.infura.io/v3/b00b2c2cc09c487685e9fb061256d6a6'
-      }
-    },
-    defaultNetwork: "mainnet"
-  });
+  const [ethConfig, setEthConfig] = useState<EthereumConfig>(defaultEthConfig);
 
   const plugins: PluginRegistration[] = [
     {
@@ -53,6 +55,12 @@ export default function Web3ApiManager({ children }: { children: JSX.Element }) 
     if (chainId && library) {
       const id = chainId.toString()
       const currentNetwork = networks[id]
+
+      if (!currentNetwork) {
+        setEthConfig(defaultEthConfig);
+        return;
+      }
+
       const networkConfigs = {
         [currentNetwork.name]: {
           provider: library,
