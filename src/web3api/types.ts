@@ -2,6 +2,9 @@ import { tokenList } from "../constants/token-list";
 
 export const ensUri = "ens/v2.uniswap.web3api.eth";
 
+export const UNISWAP_ROUTER_CONTRACT =
+  "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
+
 // NOTE: All types are identical to the Web3API's schema:
 //       https://ipfs.io/ipfs/bafybeiariqcaxwjlcft6cmqvv3cweafl4beq6kykvj3hbywkoqjjvr5ady/schema.graphql
 
