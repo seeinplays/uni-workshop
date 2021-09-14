@@ -221,7 +221,18 @@ export async function swapTokenPair(
       tokenOut: outputToken,
       amount: inputAmount,
       allowedSlippage: allowedSlippage,
-      recipient: usAnd lastly, if you still need more convincing on why Polywrap is 
+      recipient: userAddress,
+      ttl: ttl
+    }
+  });
+
+  if (errors) {
+    throw errors;
+  }
+
+  if (!data) {
+    throw Error("swap returned undefined, this should never happen");
+  }
 
   return data.swap.hash;
 }
