@@ -1,8 +1,16 @@
 import React from 'react';
-import { Link, Flex, Button, Image, Text } from '@chakra-ui/react';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
+import {
+  useColorMode,
+  Link,
+  Flex,
+  Button,
+  Image,
+  Text,
+} from '@chakra-ui/react';
+import { MoonIcon, SunIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 
 function Nav() {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <>
       <Flex
@@ -35,6 +43,9 @@ function Nav() {
           <Link mr={5} href='https://docs.polywrap.io/' isExternal>
             Documentation <ExternalLinkIcon mx='2px' />
           </Link>
+          <Button mr={5} onClick={toggleColorMode}>
+            {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+          </Button>
           <Button borderRadius='15px' colorScheme='green'>
             Connect
           </Button>

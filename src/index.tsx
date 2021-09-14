@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { ThemeConfig, ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 import { createWeb3ReactRoot, Web3ReactProvider } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
@@ -27,6 +27,11 @@ const styles = {
       bg: mode('gray.100', '#1C2751')(props),
     },
   }),
+};
+
+const config: ThemeConfig = {
+  initialColorMode: 'light',
+  useSystemColorMode: false,
 };
 
 const theme = extendTheme({
