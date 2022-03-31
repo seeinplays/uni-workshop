@@ -2,7 +2,7 @@
 ***Next-Gen SDKs for Web3***
 
 ## Introduction
-[Presentation](https://www.canva.com/design/DAEp9ePJUQ0/HaHaeo5uC3ERY0iyuLPHMw/view?utm_content=DAEp9ePJUQ0&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
+Presentation - [Video](https://youtu.be/uGctiCNrt0I), [Slides](https://www.canva.com/design/DAEp9ePJUQ0/HaHaeo5uC3ERY0iyuLPHMw/view?utm_content=DAEp9ePJUQ0&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
 
 ## Additional Context
 https://polywrap.io/#/
