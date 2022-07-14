@@ -1,4 +1,4 @@
-import { ensUri, Token } from "./types";
+import { ensUri, Token, UNISWAP_ROUTER_CONTRACT } from "./types";
 import { Web3ApiClient } from "@web3api/client-js";
 
 export async function approveToken(
@@ -6,5 +6,32 @@ export async function approveToken(
   token: Token,
   amount: string
 ): Promise<string> {
-  return "...";
+
+  const {data, errors} = await client.query<{
+    approve: {
+      hash: string;
+    };
+  }>({
+    uri: ensUri,
+    query: `mutation {
+      approve(
+        token: $token
+        amount: $amount
+      )
+    }`,
+    variables: {
+      token,
+      amount
+    }
+  });
+
+  if (errors) {
+    throw errors;
+  }
+
+  if (!data) {
+    throw Error("approve returned undefined, this should never happen");
+  }
+
+  return data.approve.hash;
 }
